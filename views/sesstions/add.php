@@ -12,15 +12,14 @@ $t = new Trainer();
 
 $sesstions = $s->getAllSesstions();
 $classes = $c->getAllClasses();
-$course = $co->getAllCourses();
-$trainer = $t->getAllTrainer();
+$courses = $co->getAllCourses();
+$trainers = $t->getAllTrainer();
 
 if ($_POST && count($_POST) > 0) {
 
     $ses = new Sesstions();
     $session_id = $_POST["sesstionInput"];
     $class_id = $_POST["classInput"];
-    // $class_no = $_POST["classNoInput"];
     $coures_name = $_POST["couresNameInput"];
     $trainer_name = $_POST["trainerNameInput"];
     $start_time = $_POST["startTimeInput"];

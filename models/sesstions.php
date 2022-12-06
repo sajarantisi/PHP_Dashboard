@@ -2,11 +2,11 @@
 
 class Sesstions
 {
-    private $sessionId;
+    private $sesstionId;
     private $classId;
     private $startTime;
     private $endTime;
-    private $sessionDate;
+    private $sesstionDate;
 
 
     private $servername = "localhost";
@@ -41,7 +41,6 @@ class Sesstions
         $sesstionsList = array();
         $sql = "SELECT * FROM sesstions_vw";
         $result = $this->conn->query($sql);
-
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
@@ -83,11 +82,11 @@ class Sesstions
         $classId,
         $startTime = null,
         $endTime = null,
-        $sessionDate = null
+        $sesstionDate = null
     ) {
         $this->cerateConnection();
-        $sql = "INSERT  INTO sesstions(class_id,start_time,end_time,session_date) " . "
-        VALUES ('$classId', '$startTime','$endTime','$sessionDate')";
+        $sql = "INSERT  INTO sesstions(class_id,start_time,end_time,sesstion_date) " . "
+        VALUES ('$classId', '$startTime','$endTime','$sesstionDate')";
 
         if ($this->conn->query($sql) === TRUE) {
             $this->conn->close();
@@ -105,7 +104,7 @@ class Sesstions
     public function deleteSesstions($id = 0)
     {
         $this->cerateConnection();
-        $sql = "DELETE  FROM sesstions WHERE session_id = $id;";
+        $sql = "DELETE  FROM sesstions WHERE sesstion_id = $id;";
 
         if ($this->conn->query($sql) === TRUE) {
             $this->conn->close();
@@ -127,7 +126,7 @@ class Sesstions
         $this->cerateConnection();
 
         $sesstionRow = array();
-        $sql = "SELECT * FROM sesstions_vw where session_id = $id";
+        $sql = "SELECT * FROM sesstions_vw where sesstion_id = $id";
         $result = $this->conn->query($sql);
         $sesstionRow = $result->fetch_assoc();
         $this->conn->close();
@@ -144,16 +143,16 @@ class Sesstions
         $classId,
         $startTime = null,
         $endTime  = null,
-        $sessionDate = null,
+        $sesstionDate = null,
         $id = 0
     ) {
         $this->cerateConnection();
         $sql = "UPDATE sesstions SET class_id ='$classId',
         star_time = '$startTime ',
         end_time = '$endTime '
-        sesstion_date = '$sessionDate '
+        sesstion_date = '$sesstionDate '
 
-         WHERE session_id =$id";
+         WHERE sesstion_id =$id";
 
         if ($this->conn->query($sql) === TRUE) {
             $this->conn->close();
@@ -249,21 +248,21 @@ class Sesstions
     }
 
     /**
-     * Get the value of sessionDate
+     * Get the value of sesstionDate
      */
-    public function getSessionDate()
+    public function getSesstionDate()
     {
-        return $this->sessionDate;
+        return $this->sesstionDate;
     }
 
     /**
-     * Set the value of sessionDate
+     * Set the value of sesstionDate
      *
      * @return  self
      */
-    public function setSessionDate($sessionDate)
+    public function setSesstionDate($sesstionDate)
     {
-        $this->sessionDate = $sessionDate;
+        $this->sesstionDate = $sesstionDate;
 
         return $this;
     }

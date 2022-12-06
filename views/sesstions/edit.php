@@ -12,8 +12,8 @@ $t = new Trainer();
 
 $sesstions = $s->getAllSesstions();
 $classes = $c->getAllClasses();
-$course = $co->getAllCourses();
-$trainer = $t->getAllTrainer();
+$courses = $co->getAllCourses();
+$trainers = $t->getAllTrainer();
 
 
 if (isset($_GET["id"])) {
@@ -26,20 +26,20 @@ if (isset($_GET["id"])) {
 if ($_POST && count($_POST) > 0) {
 
     $ses = new Sesstions();
-    $session_id = $_POST["sesstionInput"];
+    $sesstion_id = $_POST["sesstionInput"];
     $class_id = $_POST["classInput"];
-    $class_no = $_POST["classNoInput"];
+    // $class_no = $_POST["classNoInput"];
     $coures_name = $_POST["couresNameInput"];
     $trainer_name = $_POST["trainerNameInput"];
     $start_time = $_POST["startTimeInput"];
     $end_time = $_POST["endTimeInput"];
-    $session_date = $_POST["sesstionDateInput"];
+    $sesstion_date = $_POST["sesstionDateInput"];
 
-    $isUpdate = $cls_object->updateSesstions(
+    $isUpdate = $ses->updateSesstions(
         $classId,
         $startTime,
         $endTime,
-        $sessionDate,
+        $sesstionDate,
         $_post["id"]
     );
 
@@ -83,7 +83,7 @@ if ($_POST && count($_POST) > 0) {
                     </div>
                     <div class="mb-3">
                         <label class="form-label">رقم السجل</label>
-                        <select class="form-select" name="classNoInput">
+                        <select class="form-select" name="classInput">
                             <?php foreach ($classes as  $class) { ?>
                                 <option value="<?= $class['class_id'] ?> " <?= ($row['class_id'] == $class['class_id'] ? 'selected' : '') ?>>
                                     <?= $class['class_no'] ?>
